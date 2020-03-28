@@ -1,7 +1,13 @@
-> To recognize which points in image represent the feature and which don’t. For e.g. some points in the image may represent the appearance of a cat and the rest don’t. The goal to define a surface in the high dimensional space that exactly separates the points into exactly two groups, one which show cats and the other that has no cats in it.
+To recognize which points in image represent the feature and which don’t. For e.g. some points in the image may represent the appearance of a cat and the rest don’t. The goal to define a surface in the high dimensional space that exactly separates the points into exactly two groups, one which show cats and the other that has no cats in it.
 
-> A **kernel** is a surface representation that the machine learning (ML) designer believes can represent the desired separation between the two groups. It can also be called as feature extractor
+A **kernel** is a surface representation that the machine learning (ML) designer believes can represent the desired separation between the two groups. It can also be called as feature extractor
 
-> To understand it better consider an image (See [alphabet.png](https://github.com/anuragal/deep-learning/blob/master/S1/alphabet.png)) of multiple english words, now if goal is to extract all the possible alphabets from the image then maximum of 26 alphabets can be extracted. To extract a featue kernel will be used. FOr each alphabet multiple featues can be extracted for e.g for 'a' multiple featues might be based on orientation of alphabet (see example image with all features [features.png](https://github.com/anuragal/deep-learning/blob/master/S1/features.jpg)). These similar features are known as feature map or **channels**
+To understand it better consider an image of multiple english words
 
-> When these channels are put on top of each other original image is obtained
+![](https://github.com/anuragal/deep-learning/blob/master/S1/alphabet.png)
+    
+Now if goal is to extract all the possible alphabets from the image then maximum of 26 alphabets can be extracted. To extract a featue kernel will be used. FOr each alphabet multiple featues can be extracted for e.g for 'a' multiple featues might be based on orientation of alphabet. See example image with all features 
+
+![](https://github.com/anuragal/deep-learning/blob/master/S1/features.jpg)).
+
+These similar features are known as feature map or **channels**. When these channels are put on top of each other original image is obtained
