@@ -1,4 +1,4 @@
-Assignment Questions
+## Assignment Questions
 
 1. What are Channels and Kernels (according to EVA)?
 2. Why should we (nearly) always use 3x3 kernels?
