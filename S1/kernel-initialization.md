@@ -19,7 +19,7 @@ Artificial neural networks are trained using a stochastic optimization algorithm
 
 As the search process unfolds, there is a risk that we are stuck in an unfavorable area of the search space. Using randomness during the search process gives some likelihood of getting unstuck and finding a better final candidate solution
 
-for e.g.
+e.g. of kernel initialization
 
     [[ 0.91940167  0.08143941]
     [ 0.68744134  0.87236687]]
