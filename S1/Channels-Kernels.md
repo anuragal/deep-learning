@@ -4,10 +4,10 @@ A **kernel** is a surface representation that the machine learning (ML) designer
 
 To understand it better consider an image of multiple english words
 
-![](https://github.com/anuragal/deep-learning/blob/master/S1/alphabet.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S1/images/alphabet.png)
     
 Now if goal is to extract all the possible alphabets from the image then maximum of 26 alphabets can be extracted. To extract a featue kernel will be used. FOr each alphabet multiple featues can be extracted for e.g for 'a' multiple featues might be based on orientation of alphabet. See example image with all features 
 
-![](https://github.com/anuragal/deep-learning/blob/master/S1/features.jpg)).
+![](https://github.com/anuragal/deep-learning/blob/master/S1/images/features.jpg)).
 
 These similar features are known as feature map or **channels**. When these channels are put on top of each other original image is obtained
