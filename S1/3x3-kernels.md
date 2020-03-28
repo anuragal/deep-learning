@@ -8,4 +8,6 @@ Use of 3x3 layers reduces the processing time significantly. For e.g. for a 7x7 
          3x3 > 1x1
     which is using 9 + 9 + 9 = 27 parameters instead or 49 parameters
 
-(see [7x7.gif](https://github.com/anuragal/deep-learning/blob/master/S1/7x7.gif)) to know convolution happen on 7x7 using 3x3 kernel
+See below image to know convolution happen on 7x7 using 3x3 kernel
+
+![](https://github.com/anuragal/deep-learning/blob/master/S1/images/7x7.gif)
