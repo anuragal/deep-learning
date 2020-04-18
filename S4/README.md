@@ -6,8 +6,7 @@
 4. Don't use fully connected layer
 5. To learn how to add different things we covered in this session, you can refer to this [code](https://www.kaggle.com/enwei26/mnist-digits-pytorch-cnn-99 (Links to an external site.))
 
-## Parameters used
-
+## Parameters used 19,450 < 20,000
 
     ------------------------------------------------------------
         Layer (type)               Output Shape         Param #
