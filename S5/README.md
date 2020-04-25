@@ -9,7 +9,7 @@
 
 ### Run 1 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anuragal/deep-learning/blob/master/S5/run1.ipynb)
 
-#### Code:
+#### Targets:
 - Get the basic skeleton right. We will try and avoid changing this skeleton as much as possible. 
 - No fancy stuff
 #### Results:
@@ -22,7 +22,7 @@
 
 ### Run 2 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anuragal/deep-learning/blob/master/S5/run2.ipynb)
 
-#### Code:
+#### Targets:
 - Make the model lighter by changing the number of channels
 - Add GAP
 #### Results:
@@ -35,7 +35,7 @@
 
 ### Run 3 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anuragal/deep-learning/blob/master/S5/run3.ipynb)
 
-#### Code:
+#### Targets:
 - Added Batch-Noramlization to increase model efficiency
 #### Results:
 - Parameters: 9,816
@@ -47,7 +47,7 @@
 
 ### Run 4 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anuragal/deep-learning/blob/master/S5/run4.ipynb)
 
-#### Code:
+#### Targets:
 - Add Regularization, Dropout
 #### Results:
 - Parameters: 9,816
@@ -60,7 +60,7 @@
 
 ### Run 5 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anuragal/deep-learning/blob/master/S5/run5.ipynb)
 
-#### Code:
+#### Targets:
 - Add LR Scheduler
 #### Results:
 - Parameters: 9,816
