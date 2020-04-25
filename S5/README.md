@@ -36,7 +36,7 @@
 ### Run 3 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anuragal/deep-learning/blob/master/S5/run3.ipynb)
 
 #### Targets:
-- Added Batch-Noramlization to increase model efficiency
+- Add Batch-Noramlization to increase model efficiency
 #### Results:
 - Parameters: 9,816
 - Best Train Accuracy: 99.60%
