@@ -22,11 +22,11 @@
 
 ### Run 2 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/anuragal/deep-learning/blob/master/S5/run2.ipynb)
 
-#### Code
+#### Code:
 - Make the model lighter by changing the number of channels
 - Add GAP
 #### Results:
-- Parameters: 9664
+- Parameters: 9,664
 - Best Train Accuracy: 98.91%
 - Best Test Accuracy: 98.81%
 #### Analysis:
@@ -38,7 +38,7 @@
 #### Code:
 - Added Batch-Noramlization to increase model efficiency
 #### Results:
-- Parameters: 9816
+- Parameters: 9,816
 - Best Train Accuracy: 99.60%
 - Best Test Accuracy: 99.21%
 #### Analysis:
@@ -50,7 +50,7 @@
 #### Code:
 - Add Regularization, Dropout
 #### Results:
-- Parameters: 9816
+- Parameters: 9,816
 - Best Train Accuracy: 99.09%
 - Best Test Accuracy: 99.34%
 #### Analysis:
@@ -63,7 +63,7 @@
 #### Code:
 - Add LR Scheduler
 #### Results:
-- Parameters: 9816
+- Parameters: 9,816
 - Best Train Accuracy: 99.05%
 - Best Test Accuracy: 99.41% (15th Epoch)
 #### Analysis:
