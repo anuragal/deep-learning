@@ -34,3 +34,8 @@
 ### 25 misclassified images for "without L1/L2 with GBN"
 
 ![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/GBN.png)
+
+### L1 and L2's performance in the regularization
+In my opinion L1 is giving more accurate results then L2. As seen in Loss Change graph with L2 the loss is more compared to when L2 is not used. Similarly using only L1 gives more accuracy compared to using L2 with L1 or alone.
+
+With L2 the fluctuations in accuracy can also be seen
