@@ -19,11 +19,11 @@
 
 ##  Results
 
-### Loss change for all 8 jobs
+### Loss change graph for all 8 jobs
 
 ![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/loss.png)
 
-### Validation Accuracy for all 8 jobs
+### Validation Accuracy change graph for all 8 jobs
 
 ![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/accuracy.png)
 
