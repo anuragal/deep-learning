@@ -29,8 +29,8 @@
 
 ### 25 misclassified images for "without L1/L2 with BN"
 
-![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/L1L2BN.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/BN.png)
 
 ### 25 misclassified images for "without L1/L2 with GBN"
 
-![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/L1L2GBN.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/GBN.png)
