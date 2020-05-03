@@ -1,6 +1,6 @@
 # Session 6 - Regularization
 
-### Objective
+## Objective
 
 1. Use Session 5 code and run the model for 20 epochs for each
 
@@ -17,5 +17,20 @@
 
 3. Plot 25 misclassified images for "without L1/L2 with BN" AND "without L1/L2 with GBN" model
 
-###  Results
+##  Results
 
+### Loss change for all 8 jobs
+
+![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/loss.png)
+
+### Validation Accuracy for all 8 jobs
+
+![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/accuracy.png)
+
+### 25 misclassified images for "without L1/L2 with BN"
+
+![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/BN.png)
+
+### 25 misclassified images for "without L1/L2 with GBN"
+
+![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/GBN.png)
