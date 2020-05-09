@@ -22,8 +22,12 @@
 ## Code Modularization
 
 1. Created separate classes for
+
    a. Model - `Net`
+   
    b. Training & Testing code - `DataModel`
+   
    c. Dataloader/transformations/image-augmentations - `ImageData`
+   
    
 Not able to firgure out how to load separate files into colab, will search and improve it
