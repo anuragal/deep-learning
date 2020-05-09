@@ -18,3 +18,12 @@
 4. Added GAP
 5. Max Acuracy: 83.19% on EPOCH 18
 6. Total Params: 141,376
+
+## Code Modularization
+
+1. Created separate classes for
+   a. Model - `Net`
+   b. Training & Testing code - `DataModel`
+   c. Dataloader/transformations/image-augmentations - `ImageData`
+   
+Not able to firgure out how to load separate files into colab, will search and improve it
