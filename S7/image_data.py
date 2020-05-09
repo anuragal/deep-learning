@@ -41,5 +41,6 @@ class ImageData(object):
     testset = torchvision.datasets.CIFAR10(root='./data', train=False,
                                            download=True, transform=transform)
 
-   	self.trainloader = torch.utils.data.DataLoader(trainset, **dataloader_args)
-		self.testloader = torch.utils.data.DataLoader(testset, **dataloader_args)
+    self.trainloader = torch.utils.data.DataLoader(trainset, **dataloader_args)
+    self.testloader = torch.utils.data.DataLoader(testset, **dataloader_args)
+
