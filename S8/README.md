@@ -11,6 +11,11 @@
 1. Accuracy is 86.28% at Epoch 22
 2. Number of Epochs 22
 
+## How to run?
+
+Upload files on colab.research.google.com as per below structure
+
+
 ### Model
 
 1. Model is overfitting
