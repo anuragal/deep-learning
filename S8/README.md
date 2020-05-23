@@ -19,12 +19,12 @@
 
 ### Loss change graph
 
-![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/loss.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S8/images/loss.png)
 
 ### Validation Accuracy change graph
 
-![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/accuracy.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S8/images/accuracy.png)
 
 ### 25 misclassified images
 
-![](https://github.com/anuragal/deep-learning/blob/master/S6_Final/images/BN.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S8/images/BN.png)
