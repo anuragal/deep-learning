@@ -27,4 +27,4 @@
 
 ### 25 misclassified images
 
-![](https://github.com/anuragal/deep-learning/blob/master/S8/images/BN.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S8/images/misclassified.png)
