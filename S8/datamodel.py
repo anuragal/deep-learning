@@ -1,13 +1,18 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 from tqdm import tqdm
 import torch.optim as optim
 
 # Let's visualize some of the images
-%matplotlib inline
 import matplotlib.pyplot as plt
 import numpy as np
 
+use_cuda = torch.cuda.is_available()
+device = torch.device("cuda" if use_cuda else "cpu")
+
 class DataModel(object):
-  def __init__(self, num_of_epochs = 10, cal_misclassified = False):
+  def __init__(self, image_data, num_of_epochs = 10, cal_misclassified = False):
     super(DataModel, self).__init__()
     self.train_losses = []
     self.train_acc = []
@@ -17,6 +22,7 @@ class DataModel(object):
     self.cal_misclassified = cal_misclassified
     self.EPOCHS = num_of_epochs
     self.can_exit = False
+    self.image_data = image_data
 
   def train(self, model, device, train_loader, optimizer, epoch):
     model.train()
@@ -91,8 +97,8 @@ class DataModel(object):
           break
         print("EPOCH:", epoch + 1)
         self.misclassified = []
-        self.train(model, device, img_data.trainloader, optimizer, epoch)
-        self.test(model, device, img_data.testloader)
+        self.train(model, device, self.image_data.trainloader, optimizer, epoch)
+        self.test(model, device, self.image_data.testloader)
 
   def plot_matrix(self, matrix_data, matrix):
       fig = plt.figure(figsize=(10, 10))
@@ -119,7 +125,7 @@ class DataModel(object):
         misclassified_transpose = np.transpose(self.misclassified[i][0].cpu().numpy(), (1, 2, 0))
         plt.imshow(misclassified_transpose.squeeze(),cmap='gray',interpolation='none')
         
-        sub.set_title("Pred={}, Act={}".format(str(img_data.classes[self.misclassified[i][1].data]),str(img_data.classes[self.misclassified[i][2].data])))
+        sub.set_title("Pred={}, Act={}".format(str(self.image_data.classes[self.misclassified[i][1].data]),str(self.image_data.classes[self.misclassified[i][2].data])))
         
     plt.tight_layout()
 
