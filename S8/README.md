@@ -8,14 +8,14 @@
 
 ### Results
 
-1. Accuracy is 85% at Epoch 21
-2. Number of Epochs 21
+1. Accuracy is 86.28% at Epoch 22
+2. Number of Epochs 22
 
 ### Model
 
 1. Model is overfitting
-2. Training Accuracy 95%
-3. Test Accuracy 85%
+2. Training Accuracy 94.52%
+3. Test Accuracy 86.28%
 
 ### Loss change graph
 
