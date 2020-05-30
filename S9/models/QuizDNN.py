@@ -1,20 +1,20 @@
 import torch.nn as nn
 
 class QuizDNN(nn.Module):
-    def __init__(self, args):
+    def __init__(self):
         super(QuizDNN, self).__init__()
 
         self.x1_block = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
             nn.ReLU(),
             nn.BatchNorm2d(64),
-            nn.Dropout(args.dropout),  
+            nn.Dropout(0.15),  
         )
         self.x2_block = nn.Sequential(
             nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
             nn.ReLU(),
             nn.BatchNorm2d(64),
-            nn.Dropout(args.dropout), 
+            nn.Dropout(0.15), 
         )
         self.x3_block = nn.Sequential(
             nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
@@ -26,13 +26,13 @@ class QuizDNN(nn.Module):
             nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
             nn.ReLU(),
             nn.BatchNorm2d(64),
-            nn.Dropout(args.dropout), 
+            nn.Dropout(0.15), 
         )
         self.x6_block = nn.Sequential(
             nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
             nn.ReLU(),
             nn.BatchNorm2d(64),
-            nn.Dropout(args.dropout),  
+            nn.Dropout(0.15),  
         )
         self.x7_block = nn.Sequential(
             nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
@@ -44,13 +44,13 @@ class QuizDNN(nn.Module):
             nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
             nn.ReLU(),
             nn.BatchNorm2d(64),
-            nn.Dropout(args.dropout), 
+            nn.Dropout(0.15), 
         )
         self.x10_block = nn.Sequential(
             nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
             nn.ReLU(),
             nn.BatchNorm2d(64),
-            nn.Dropout(args.dropout),  
+            nn.Dropout(0.15),  
         )
         self.x11_block = nn.Sequential(
             nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3, 3), padding=1, bias=False),
