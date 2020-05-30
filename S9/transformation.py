@@ -19,7 +19,8 @@ from albumentations.augmentations.transforms import (
     RandomBrightnessContrast,    
     RandomGamma,
     Normalize,
-    Rotate
+    Rotate,
+    CoarseDropout
 )
 
 from albumentations import (
@@ -50,7 +51,10 @@ class AlbumentationTransformation(object):
     # Use data aug only for train data
     if is_train:
       transforms_list.extend([
-        HorizontalFlip(p=0.5)
+        HorizontalFlip(p=0.5),
+        Rotate(limit=15),
+        CoarseDropout(max_holes=1, max_height=16, max_width=16, min_height=4,
+						min_width=4, fill_value=mean*255.0, p=0.75),
         ])
     transforms_list.extend([
       Normalize(
