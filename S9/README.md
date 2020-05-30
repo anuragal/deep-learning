@@ -15,7 +15,7 @@
 
 Upload files on colab.research.google.com as per below structure
 
-![](https://github.com/anuragal/deep-learning/blob/master/S8/images/directory.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S9/images/directory.png)
 
 ### Model
 
