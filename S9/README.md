@@ -1,4 +1,4 @@
-## Albumentations & GradCam
+## Albumentations & GradCam + Quiz
 
 1. Apply tranformations using library Albumentations. Apply ToTensor, HorizontalFlip, Normalize (at min) + More (for additional points)
 2. Please make sure that your test_transforms are simple and only using ToTensor and Normalize
@@ -38,3 +38,12 @@ Upload files on colab.research.google.com as per below structure
 ## GRADCam 
 
 ![](https://github.com/anuragal/deep-learning/blob/master/S9/images/gradcam.png)
+
+
+## Quiz Results
+
+1. Model is overfitting
+2. Training Accuracy 94.52%
+3. Test Accuracy 86.28%
+4. Number of Epochs - 
+5. Notebook file link - 
