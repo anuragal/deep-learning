@@ -6,10 +6,21 @@
 4. Your final code (notebook file) must use imported functions to implement transformations and GradCam functionality
 5. Target Accuracy is 87%
 
+## Transformations Used
+
+### Train
+1. HorizontalFlip
+2. Rotate
+3. CoarseDropout
+
+### Train + Test
+4. Normalize
+5. ToTensor
+
 ## Results
 
-1. Accuracy is 86.28% at Epoch 22
-2. Number of Epochs 22
+1. Accuracy is 88.19% at Epoch 30
+2. Number of Epochs 30
 
 ## How to run?
 
@@ -19,9 +30,9 @@ Upload files on colab.research.google.com as per below structure
 
 ### Model
 
-1. Model is overfitting
-2. Training Accuracy 94.52%
-3. Test Accuracy 86.28%
+1. Model looks good
+2. Training Accuracy 89.98%
+3. Test Accuracy 88.19%
 
 ### Loss change graph
 
