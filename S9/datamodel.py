@@ -1,13 +1,16 @@
+import torch
 from tqdm import tqdm
 import torch.optim as optim
+import torch.nn as nn
 
 # Let's visualize some of the images
-%matplotlib inline
 import matplotlib.pyplot as plt
 import numpy as np
 
+from gradcam import VisualizeCam
+
 class DataModel(object):
-  def __init__(self, num_of_epochs = 10, cal_misclassified = False):
+  def __init__(self, image_data, num_of_epochs = 10, cal_misclassified = False):
     super(DataModel, self).__init__()
     self.train_losses = []
     self.train_acc = []
@@ -18,6 +21,7 @@ class DataModel(object):
     self.EPOCHS = num_of_epochs
     self.can_exit = False
     self.model = None
+    self.img_data = image_data
 
   def train(self, device, train_loader, optimizer, epoch):
     self.model.train()
@@ -82,9 +86,9 @@ class DataModel(object):
       if accuracy > 87:
         self.can_exit = True
       
-  def run_model(self, net_model):
+  def run_model(self, net_model, device):
     self.model = net_model.to(device)
-    optimizer = optim.SGD(model.parameters(), lr=0.05, momentum=0.9, weight_decay=5e-4)
+    optimizer = optim.SGD(self.model.parameters(), lr=0.05, momentum=0.9, weight_decay=5e-4)
 
     for epoch in range(self.EPOCHS):
         if self.can_exit:
@@ -92,8 +96,8 @@ class DataModel(object):
           break
         print("EPOCH:", epoch + 1)
         self.misclassified = []
-        self.train(device, img_data.trainloader, optimizer, epoch)
-        self.test(device, img_data.testloader)
+        self.train(device, self.img_data.trainloader, optimizer, epoch)
+        self.test(device, self.img_data.testloader)
 
   def plot_matrix(self, matrix_data, matrix):
       fig = plt.figure(figsize=(10, 10))
@@ -120,7 +124,7 @@ class DataModel(object):
         misclassified_transpose = np.transpose(self.misclassified[i][0].cpu().numpy(), (1, 2, 0))
         plt.imshow(misclassified_transpose.squeeze(),cmap='gray',interpolation='none')
         
-        sub.set_title("Pred={}, Act={}".format(str(img_data.classes[self.misclassified[i][1].data]),str(img_data.classes[self.misclassified[i][2].data])))
+        sub.set_title("Pred={}, Act={}".format(str(self.img_data.classes[self.misclassified[i][1].data]),str(self.img_data.classes[self.misclassified[i][2].data])))
         
     plt.tight_layout()
 
@@ -134,12 +138,12 @@ class DataModel(object):
   
   def plot_GRADcam(self):
     target_layers = ["layer1","layer2","layer3","layer4"]
-    viz_cam = VisualizeCam(self.model, img_data.classes, target_layers)
+    viz_cam = VisualizeCam(self.model, self.img_data.classes, target_layers)
 
     num_img = 5
     incorrect_pred_imgs = []
     image_for_gradcam = []
     for i in range(num_img):
-      incorrect_pred_imgs.append(torch.as_tensor(dm.misclassified[i][0]))
-      image_for_gradcam.append(dm.misclassified[i])
+      incorrect_pred_imgs.append(torch.as_tensor(self.misclassified[i][0]))
+      image_for_gradcam.append(self.misclassified[i])
     viz_cam(torch.stack(incorrect_pred_imgs), image_for_gradcam, target_layers, metric="incorrect")

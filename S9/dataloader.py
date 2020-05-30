@@ -1,3 +1,8 @@
+import torch
+import torchvision
+
+from transformation import TransformationFactory
+
 class ImageData(object):
 
   classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog',
