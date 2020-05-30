@@ -57,8 +57,8 @@ Upload files on colab.research.google.com as per below structure
 
 ## Quiz Results
 
-1. Model is overfitting
-2. Training Accuracy 94.52%
-3. Test Accuracy 86.28%
-4. Number of Epochs - 
-5. Notebook file link - 
+1. Model looks good
+2. Training Accuracy 79.58%
+3. Test Accuracy 81.65%%
+4. Number of Epochs - 10
+5. Notebook file link - https://github.com/anuragal/deep-learning/blob/master/S9/QuizDNN.ipynb
