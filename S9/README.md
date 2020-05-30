@@ -8,12 +8,12 @@
 
 ## Transformations Used
 
-### Train
+#### Train
 1. HorizontalFlip
 2. Rotate
 3. CoarseDropout
 
-### Train + Test
+#### Train + Test
 4. Normalize
 5. ToTensor
 
