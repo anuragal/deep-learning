@@ -52,7 +52,6 @@ https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
 ```
 
 ### models
-Models
 1. Resnet18
 2. Resnet34
 3. Resnet50
