@@ -83,6 +83,6 @@ Defining data transformations. For e.g. how data can be augmented to correct rep
 ```python
     from transformation import TransformationFactory
 
-	# Choose from "albumentations" or "pytorch". Default is "pytorch"
-   t = TransformationFactory(transformation_type)
+    # Choose from "albumentations" or "pytorch". Default is "pytorch"
+    t = TransformationFactory(transformation_type)
 ```
