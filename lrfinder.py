@@ -2,7 +2,7 @@ import copy
 import os
 import torch
 from tqdm.autonotebook import tqdm
-from torch.optim.lr_scheduler import _LRScheduler, ReduceLROnPlateau
+from torch.optim.lr_scheduler import _LRScheduler
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
 
@@ -256,8 +256,6 @@ class LRFinder(object):
             lr_schedule = ExponentialLR(self.optimizer, end_lr, num_iter)
         elif step_mode.lower() == "linear":
             lr_schedule = LinearLR(self.optimizer, end_lr, num_iter)
-        elif step_mode.lower() == "onplateau":
-            lr_schedule = OnPlateauLR(self.optimizer, 'min')
         else:
             raise ValueError("expected one of (exp, linear), got {}".format(step_mode))
 
@@ -298,10 +296,7 @@ class LRFinder(object):
 
             # Update the learning rate
             self.history["lr"].append(lr_schedule.get_lr()[0])
-            if step_mode.lower() == "onplateau":
-                lr_schedule.step(loss)
-            else:
-                lr_schedule.step()
+            lr_schedule.step()
 
             # Track the best loss and smooth it if smooth_f is specified
             if iteration == 0:
@@ -544,25 +539,6 @@ class ExponentialLR(_LRScheduler):
             r = self.last_epoch / (self.num_iter - 1)
 
         return [base_lr * (self.end_lr / base_lr) ** r for base_lr in self.base_lrs]
-
-class OnPlateauLR(ReduceLROnPlateau):
-    """Exponentially increases the learning rate between two boundaries over a number of
-    iterations.
-
-    Arguments:
-        optimizer (torch.optim.Optimizer): wrapped optimizer.
-        end_lr (float): the final learning rate.
-        num_iter (int): the number of iterations over which the test occurs.
-        last_epoch (int, optional): the index of last epoch. Default: -1.
-    """
-
-    def __init__(self, optimizer, mode):
-        self.optimizer = optimizer
-
-        super(OnPlateauLR, self).__init__(self.optimizer, mode)
-
-    def get_lr(self):
-        return [group['lr'] for group in self.optimizer.param_groups]
 
 class StateCacher(object):
     def __init__(self, in_memory, cache_dir=None):
