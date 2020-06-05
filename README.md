@@ -13,7 +13,7 @@ https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
 	Creates `self.trainloader` & `self.testloader`
 
 #### Usage
-
+```python
     from dataloader import ImageData
 
     # Loading data and transforming it
@@ -21,7 +21,7 @@ https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
 
     # Choose from "albumentations" or "pytorch". Default is "pytorch"
     img_data.load("albumentations")
-
+```
 ### datamodel.py
 1. Model Train and Test
 2. Plot graphs
