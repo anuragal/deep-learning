@@ -10,6 +10,8 @@ class ImageData(object):
 
   def __init__(self):
     super(ImageData, self).__init__()
+    self.trainloader = None
+    self.testloader = None
 
   def load(self, transformation_type="pytorch"):
    # Choose from "albumentations" or "pytorch". Default is "pytorch"

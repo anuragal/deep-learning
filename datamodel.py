@@ -1,7 +1,5 @@
 import torch
 from tqdm import tqdm
-import torch.optim as optim
-import torch.nn as nn
 
 # Let's visualize some of the images
 import matplotlib.pyplot as plt
@@ -10,7 +8,7 @@ import numpy as np
 from gradcam import VisualizeCam
 
 class DataModel(object):
-  def __init__(self, image_data, num_of_epochs = 10, cal_misclassified = False, expected_accuracy = 95):
+  def __init__(self, image_data, criterion, optimizer, num_of_epochs = 10, cal_misclassified = False, expected_accuracy = 95):
     super(DataModel, self).__init__()
     self.train_losses = []
     self.train_acc = []
@@ -23,8 +21,10 @@ class DataModel(object):
     self.model = None
     self.img_data = image_data
     self.expected_accuracy = expected_accuracy
+    self.criterion = criterion
+    self.optimizer = optimizer
 
-  def train(self, device, train_loader, optimizer, epoch):
+  def train(self, device, train_loader, epoch):
     self.model.train()
     pbar = tqdm(train_loader)
     correct = 0
@@ -34,20 +34,19 @@ class DataModel(object):
       data, target = data.to(device), target.to(device)
 
       # Init
-      optimizer.zero_grad()
+      self.optimizer.zero_grad()
       # In PyTorch, we need to set the gradients to zero before starting to do backpropragation because PyTorch accumulates the gradients on subsequent backward passes. 
       # Because of this, when you start your training loop, ideally you should zero out the gradients so that you do the parameter update correctly.
 
       # Predict
       y_pred = self.model(data)
 
-      loss_function = nn.CrossEntropyLoss()
-      loss = loss_function(y_pred, target)
+      loss = self.criterion(y_pred, target)
       self.train_losses.append(loss)
 
       # Backpropagation
       loss.backward()
-      optimizer.step()
+      self.optimizer.step()
 
       # Update pbar-tqdm
       pred = y_pred.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
@@ -65,8 +64,7 @@ class DataModel(object):
               data, target = data.to(device), target.to(device)
               output = self.model(data)
 
-              loss_function = nn.CrossEntropyLoss()
-              loss = loss_function(output, target)
+              loss = self.criterion(output, target)
 
               test_loss += loss.item()  # sum up batch loss
               pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
@@ -89,7 +87,6 @@ class DataModel(object):
       
   def run_model(self, net_model, device):
     self.model = net_model.to(device)
-    optimizer = optim.SGD(self.model.parameters(), lr=0.05, momentum=0.9, weight_decay=5e-4)
 
     for epoch in range(self.EPOCHS):
         if self.can_exit:
@@ -97,7 +94,7 @@ class DataModel(object):
           break
         print("EPOCH:", epoch + 1)
         self.misclassified = []
-        self.train(device, self.img_data.trainloader, optimizer, epoch)
+        self.train(device, self.img_data.trainloader, epoch)
         self.test(device, self.img_data.testloader)
 
   def plot_matrix(self, matrix_data, matrix):
@@ -116,6 +113,31 @@ class DataModel(object):
       plt.legend(plt_tuple, legend_tuple)
 
       fig.savefig(f'val_%s_change.png' % (matrix.lower()))
+
+  def plot_loss_accuracy(self):
+      fig = plt.figure(figsize=(10, 10))
+      host = fig.add_subplot(111)
+
+      par1 = host.twinx()
+
+      host.set_xlabel("Distance")
+      host.set_ylabel("Loss Graph")
+      par1.set_ylabel("Test Accuracy")
+
+
+      color1 = plt.cm.viridis(0)
+      color2 = plt.cm.viridis(0.5)
+
+      p1, = (host.plot(self.test_losses, color=color1, label="Loss Graph")[0], )
+      p2, = (par1.plot(self.test_acc, color=color2, label="Test Accuracy")[0], )
+
+      lns = [p1, p2]
+      host.legend(handles=lns, loc='best')
+
+      host.yaxis.label.set_color(color1)
+      par1.yaxis.label.set_color(color2)
+
+      plt.savefig(f'val_%s_change.png' % ("lossaccuracy"), bbox_inches='tight')
 
   def plot_misclassified(self):
     fig = plt.figure(figsize = (10,10))
@@ -140,10 +162,12 @@ class DataModel(object):
   def plot_GRADcam(self, target_layers):
     viz_cam = VisualizeCam(self.model, self.img_data.classes, target_layers)
 
-    num_img = 5
+    num_img = len(self.misclassified)
     incorrect_pred_imgs = []
     image_for_gradcam = []
     for i in range(num_img):
       incorrect_pred_imgs.append(torch.as_tensor(self.misclassified[i][0]))
       image_for_gradcam.append(self.misclassified[i])
+      if i == 25:
+          break
     viz_cam(torch.stack(incorrect_pred_imgs), image_for_gradcam, target_layers, metric="incorrect")
