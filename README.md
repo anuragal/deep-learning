@@ -32,23 +32,23 @@ img_data.load("albumentations")
 	d. GRADCam
 
 #### Usage
+```
 from datamodel import DataModel
 
 # training the dataset and then running test
-```
 dm = DataModel(img_data, num_of_epochs = 10, cal_misclassified = True)
 dm.run_model(QuizDNN(), device)
 
-"""## Plotting Validation Accuracy"""
+# Plotting Validation Accuracy
 dm.plot_accuracy_graph()
 
-"""## Plotting Loss Graph"""
+# Plotting Loss Graph
 dm.plot_loss_graph()
 
-"""## Plotting Misclassified Images"""
+# Plotting Misclassified Images
 dm.plot_misclassified()
 
-"""## Plotting GRADCam for Misclassified Images"""
+# Plotting GRADCam for Misclassified Images
 dm.plot_GRADcam(["x3_block","x5_block","x7_block","x11_block"])
 ```
 
