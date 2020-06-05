@@ -62,7 +62,7 @@ https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
 ```python
     from models.resnet18 import ResNet18
 
-	use_cuda = torch.cuda.is_available()
+    use_cuda = torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
     model = ResNet18().to(device)
 ```
@@ -84,5 +84,5 @@ Defining data transformations. For e.g. how data can be augmented to correct rep
     from transformation import TransformationFactory
 
     # Choose from "albumentations" or "pytorch". Default is "pytorch"
-    t = TransformationFactory(transformation_type)
+    t = TransformationFactory("albumentations")
 ```
