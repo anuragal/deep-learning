@@ -45,7 +45,7 @@ img_data = ImageData()
 img_data.load("albumentations")
 
 # training the dataset and then running test
-dm = DataModel(img_data, num_of_epochs = 10, cal_misclassified = True)
+dm = DataModel(img_data, num_of_epochs = 10, cal_misclassified = True, expected_accuracy = 87)
 dm.run_model(QuizDNN(), device)
 
 """## Plotting Validation Accuracy"""

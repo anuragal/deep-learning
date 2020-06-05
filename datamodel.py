@@ -10,7 +10,7 @@ import numpy as np
 from gradcam import VisualizeCam
 
 class DataModel(object):
-  def __init__(self, image_data, num_of_epochs = 10, cal_misclassified = False):
+  def __init__(self, image_data, num_of_epochs = 10, cal_misclassified = False, expected_accuracy = 95):
     super(DataModel, self).__init__()
     self.train_losses = []
     self.train_acc = []
@@ -22,6 +22,7 @@ class DataModel(object):
     self.can_exit = False
     self.model = None
     self.img_data = image_data
+    self.expected_accuracy = expected_accuracy
 
   def train(self, device, train_loader, optimizer, epoch):
     self.model.train()
@@ -83,7 +84,7 @@ class DataModel(object):
           test_loss, correct, len(test_loader.dataset), accuracy))
       
       self.test_acc.append(accuracy)
-      if accuracy > 87:
+      if accuracy > self.expected_accuracy:
         self.can_exit = True
       
   def run_model(self, net_model, device):
