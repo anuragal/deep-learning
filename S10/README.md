@@ -29,7 +29,7 @@ Upload files on colab.research.google.com as per below structure
    Test - 88.68%
 
 ### Training & Test Accuracy Curve
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/loss.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S10/images/val_traintestaccuracy_change.png)
 
 ### GradCAM on for 25 misclassified images
 
