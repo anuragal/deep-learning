@@ -135,7 +135,7 @@ class VisualizeCam(object):
 
   def __call__(self, images, images_gradcam, target_layers, target_inds=None, metric=""):
     masks_map, pred = self.gcam(images, target_layers, target_inds)
-    for i in range(min(len(images),5)):
+    for i in range(min(len(images),25)):
       grad_img = images_gradcam[i]
       img = images[i]
       results_data = [{

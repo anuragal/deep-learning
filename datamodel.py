@@ -8,7 +8,7 @@ import numpy as np
 from gradcam import VisualizeCam
 
 class DataModel(object):
-  def __init__(self, image_data, criterion, optimizer, num_of_epochs = 10, cal_misclassified = False, expected_accuracy = 95):
+  def __init__(self, image_data, criterion, optimizer, schedular, num_of_epochs = 10, cal_misclassified = False, expected_accuracy = 95):
     super(DataModel, self).__init__()
     self.train_losses = []
     self.train_acc = []
@@ -23,6 +23,7 @@ class DataModel(object):
     self.expected_accuracy = expected_accuracy
     self.criterion = criterion
     self.optimizer = optimizer
+    self.schedular = schedular
 
   def train(self, device, train_loader, epoch):
     self.model.train()
@@ -53,7 +54,7 @@ class DataModel(object):
       correct += pred.eq(target.view_as(pred)).sum().item()
       processed += len(data)
       pbar.set_description(desc= f'Loss={loss.item()} Batch_id={batch_idx} Accuracy={100*correct/processed:0.2f}')
-      self.train_acc.append(100*correct/processed)
+    self.train_acc.append(100. * correct/processed)
 
   def test(self, device, test_loader):
       self.model.eval()
@@ -81,6 +82,8 @@ class DataModel(object):
       print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.2f}%)\n'.format(
           test_loss, correct, len(test_loader.dataset), accuracy))
       
+      self.schedular.step(test_loss)
+
       self.test_acc.append(accuracy)
       if accuracy > self.expected_accuracy:
         self.can_exit = True
@@ -113,6 +116,33 @@ class DataModel(object):
       plt.legend(plt_tuple, legend_tuple)
 
       fig.savefig(f'val_%s_change.png' % (matrix.lower()))
+
+  def plot_test_train_accuracy(self):
+      fig = plt.figure(figsize=(10, 10))
+      host = fig.add_subplot(111)
+
+      par1 = host.twinx()
+
+      host.set_xlabel("EPOCHS")
+      host.set_ylabel("Train Accuracy")
+      par1.set_ylabel("Test Accuracy")
+
+
+      color1 = plt.cm.viridis(0)
+      color2 = plt.cm.viridis(0.5)
+
+      print(self.train_acc)
+      print(self.test_acc)
+      p1, = (host.plot(self.train_acc, color=color1, label="Train Accuracy")[0], )
+      p2, = (par1.plot(self.test_acc, color=color2, label="Test Accuracy")[0], )
+
+      lns = [p1, p2]
+      host.legend(handles=lns, loc='best')
+
+      host.yaxis.label.set_color(color1)
+      par1.yaxis.label.set_color(color2)
+
+      plt.savefig(f'val_%s_change.png' % ("traintestaccuracy"), bbox_inches='tight')
 
   def plot_loss_accuracy(self):
       fig = plt.figure(figsize=(10, 10))
@@ -156,8 +186,11 @@ class DataModel(object):
   def plot_loss_graph(self):
     self.plot_matrix(self.test_losses, "Loss Graph")
 
-  def plot_accuracy_graph(self):
+  def plot_test_accuracy_graph(self):
     self.plot_matrix(self.test_acc, "Validation Accuracy")
+
+  def plot_train_accuracy_graph(self):
+    self.plot_matrix(self.train_acc, "Validation Accuracy")
   
   def plot_GRADcam(self, target_layers):
     viz_cam = VisualizeCam(self.model, self.img_data.classes, target_layers)
