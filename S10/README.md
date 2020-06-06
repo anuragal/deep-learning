@@ -13,6 +13,7 @@
 ## How to run?
 
 Upload files on colab.research.google.com as per below structure
+
 ![](https://github.com/anuragal/deep-learning/blob/master/S10/images/directory.png)
 
 ## Results
