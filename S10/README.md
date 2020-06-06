@@ -32,8 +32,11 @@ Upload files on colab.research.google.com as per below structure
 ![](https://github.com/anuragal/deep-learning/blob/master/S10/images/loss.png)
 
 ### GradCAM on for 25 misclassified images
+
 ![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam1.png)
+
 ![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam2.png)
+
 ![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam3.png)
 ![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam4.png)
 ![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam5.png)
