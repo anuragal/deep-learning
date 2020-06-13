@@ -48,55 +48,15 @@ Upload files on colab.research.google.com as per below structure
 ### Training & Test Accuracy Curve
 ![](https://github.com/anuragal/deep-learning/blob/master/S11/images/val_traintestaccuracy_change.png)
 
-### GradCAM on for 25 misclassified images
+### GradCAM on for first 5 misclassified images
 
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam1.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S11/images/gradcam1.png)
 
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam2.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S11/images/gradcam2.png)
 
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam3.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S11/images/gradcam3.png)
 
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam4.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S11/images/gradcam4.png)
 
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam5.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam6.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam7.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam8.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam9.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam10.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam11.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam12.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam13.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam14.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam15.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam16.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam17.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam18.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam19.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam20.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam21.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam22.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam23.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam24.png)
-
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/gradcam25.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S11/images/gradcam5.png)
 
