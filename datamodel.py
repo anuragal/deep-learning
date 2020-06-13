@@ -5,6 +5,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 import numpy as np
 
+from lrfinder import LRFinder
 from gradcam import VisualizeCam
 
 class DataModel(object):
@@ -48,6 +49,7 @@ class DataModel(object):
       # Backpropagation
       loss.backward()
       self.optimizer.step()
+      self.schedular.step()
 
       # Update pbar-tqdm
       pred = y_pred.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
@@ -55,6 +57,18 @@ class DataModel(object):
       processed += len(data)
       pbar.set_description(desc= f'Loss={loss.item()} Batch_id={batch_idx} Accuracy={100*correct/processed:0.2f}')
     self.train_acc.append(100. * correct/processed)
+
+  def find_lr_max(self, model, device):
+      lr_finder = LRFinder(model, self.optimizer, self.criterion, device)
+      num_iter = (len(self.img_data.trainloader.dataset)//128)*4
+      lr_finder.range_test(self.img_data.trainloader, end_lr=100, num_iter=num_iter)
+      lr_finder.plot()
+
+      history = lr_finder.history
+      optim_lr = history["lr"][np.argmin(history["loss"])] 
+      lr_finder.reset()
+
+      return optim_lr
 
   def test(self, device, test_loader):
       self.model.eval()
@@ -81,8 +95,6 @@ class DataModel(object):
       accuracy = 100. * correct / len(test_loader.dataset)
       print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.2f}%)\n'.format(
           test_loss, correct, len(test_loader.dataset), accuracy))
-      
-      self.schedular.step(test_loss)
 
       self.test_acc.append(accuracy)
       if accuracy > self.expected_accuracy:
@@ -98,6 +110,7 @@ class DataModel(object):
         print("EPOCH:", epoch + 1)
         self.misclassified = []
         self.train(device, self.img_data.trainloader, epoch)
+
         self.test(device, self.img_data.testloader)
 
   def plot_matrix(self, matrix_data, matrix):
