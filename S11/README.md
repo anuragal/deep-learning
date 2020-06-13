@@ -1,6 +1,7 @@
 ## SuperConvergence
 
 1. Write a code that draws zigzag curve
+
 2. Write a code which uses this new ResNet Architecture for Cifar10:
   a. PrepLayer - Conv 3x3 s1, p1) >> BN >> RELU [64k]
   b. Layer1 -
@@ -19,14 +20,20 @@
   e. MaxPooling with Kernel Size 4
   f. FC Layer 
   g. SoftMax
+  
 3. Uses One Cycle Policy such that:
-  a. Total Epochs = 24
-  b. Max at Epoch = 5
-  c. LRMIN = FIND
-  d. LRMAX = FIND
-  e. NO Annihilation
-4. Uses this transform -RandomCrop 32, 32 (after padding of 4) >> FlipLR >> Followed by CutOut(8, 8)
+
+  a.  Total Epochs = 24
+  b.  Max at Epoch = 5
+  c.  LRMIN = FIND
+  d.  LRMAX = FIND
+  e.  NO Annihilation
+  
+4. Uses this transform -
+  RandomCrop 32, 32 (after padding of 4) >> FlipLR >> Followed by CutOut(8, 8)
+
 5. Batch size = 512
+
 6. Target Accuracy: 90%. 
 
 ## How to run?
