@@ -21,13 +21,12 @@
   f. FC Layer 
   g. SoftMax
   
-3. Uses One Cycle Policy such that:
-
-  a.  Total Epochs = 24
-  b.  Max at Epoch = 5
-  c.  LRMIN = FIND
-  d.  LRMAX = FIND
-  e.  NO Annihilation
+3. Uses One Cycle Policy such that:-
+  - Total Epochs = 24
+  - Max at Epoch = 5
+  - LRMIN = FIND
+  - LRMAX = FIND
+  - NO Annihilation
   
 4. Uses this transform -
   RandomCrop 32, 32 (after padding of 4) >> FlipLR >> Followed by CutOut(8, 8)
