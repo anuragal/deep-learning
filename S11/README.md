@@ -37,14 +37,16 @@ Upload files on colab.research.google.com as per below structure
 
 ## Results
 1. Cyclic Curve
-    ![](https://github.com/anuragal/deep-learning/blob/master/S11/images/cyclic_curve.png)
+
+![](https://github.com/anuragal/deep-learning/blob/master/S11/images/cyclic_curve.png)
+
 2. LR Max - 0.015
 3. Best Accuracy
    Train - 95.79%
    Test - 90.63%
 
 ### Training & Test Accuracy Curve
-![](https://github.com/anuragal/deep-learning/blob/master/S10/images/val_traintestaccuracy_change.png)
+![](https://github.com/anuragal/deep-learning/blob/master/S11/images/val_traintestaccuracy_change.png)
 
 ### GradCAM on for 25 misclassified images
 
