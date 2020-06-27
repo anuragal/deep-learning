@@ -66,13 +66,13 @@ class ImageData(object):
 
         train_size = int(0.7 * len(full_dataset))
         test_size = len(full_dataset) - train_size
-        self.trainset, self.testset = torch.utils.data.random_split(full_dataset, [train_size, test_size])
+        temp_train_dataset, temp_test_dataset = torch.utils.data.random_split(full_dataset, [train_size, test_size])
 
-        self.trainset1 = TinyImagenetLoader(self.trainset, transform=train_transform)
-        self.testset1 = TinyImagenetLoader(self.testset, transform=test_transform)
+        self.trainset = TinyImagenetLoader(temp_train_dataset, transform=train_transform)
+        self.testset = TinyImagenetLoader(temp_test_dataset, transform=test_transform)
 
-        self.trainloader = torch.utils.data.DataLoader(self.trainset1, batch_size=512, shuffle=True, num_workers=4)
-        self.testloader = torch.utils.data.DataLoader(self.testset1, batch_size=512, shuffle=False, num_workers=4)
+        self.trainloader = torch.utils.data.DataLoader(self.trainset, batch_size=512, shuffle=True, num_workers=4)
+        self.testloader = torch.utils.data.DataLoader(self.testset, batch_size=512, shuffle=False, num_workers=4)
 
     def get_class_distribution_loaders(self, dataloader_obj, dataset_obj):
         idx2class = {v: k for k, v in dataset_obj.class_to_idx.items()}
@@ -85,9 +85,15 @@ class ImageData(object):
 
         return count_dict
 
-    def plot_class_distribution(self):
+    def plot_class_distribution(self, dataset_path):
+        natural_img_dataset = datasets.ImageFolder(
+                              root = dataset_path
+                       )
+
         fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(18,7))
-        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.trainloader, self.trainset)]).melt(), 
+        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.trainloader, natural_img_dataset)]).melt(), 
                     x = "variable", y="value", hue="variable",  ax=axes[0]).set_title('Train Set')
-        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.testloader, self.testset)]).melt(), 
+        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.testloader, natural_img_dataset)]).melt(), 
                     x = "variable", y="value", hue="variable",  ax=axes[1]).set_title('Test Set')
+
+        # del natural_img_dataset
