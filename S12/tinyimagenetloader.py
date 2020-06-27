@@ -3,7 +3,7 @@ import numpy as np
 
 from skimage import io
 from torch.utils.data import Dataset
-
+import pathlib
 import random
 
 class TinyImagenetLoader(Dataset):
