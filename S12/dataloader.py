@@ -86,7 +86,7 @@ class ImageData(object):
         return count_dict
 
     def plot_class_distribution(self, dataset_path):
-        natural_img_dataset = datasets.ImageFolder(
+        natural_img_dataset = torchvision.datasets.ImageFolder(
                               root = dataset_path
                        )
 
