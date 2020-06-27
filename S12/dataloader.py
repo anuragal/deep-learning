@@ -91,9 +91,9 @@ class ImageData(object):
                        )
 
         fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(18,7))
-        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.trainloader, natural_img_dataset)]).melt(), 
+        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.trainloader, self.trainset)]).melt(), 
                     x = "variable", y="value", hue="variable",  ax=axes[0]).set_title('Train Set')
-        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.testloader, natural_img_dataset)]).melt(), 
+        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.testloader, self.testset)]).melt(), 
                     x = "variable", y="value", hue="variable",  ax=axes[1]).set_title('Test Set')
 
         # del natural_img_dataset
