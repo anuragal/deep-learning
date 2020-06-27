@@ -113,6 +113,9 @@ class DataModel(object):
 
         self.test(device, self.img_data.testloader)
 
+        lr = self.optimizer.param_groups[0]['lr']
+        print('\nLearning Rate: {:0.6f}'.format(lr))
+
   def plot_matrix(self, matrix_data, matrix):
       fig = plt.figure(figsize=(10, 10))
       
