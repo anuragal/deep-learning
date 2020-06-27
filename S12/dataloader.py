@@ -3,6 +3,10 @@ from os import path
 import torch
 import torchvision
 
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 from deep_learning.S12.transformation import TransformationFactory
 from deep_learning.S12.tinyimagenetloader import TinyImagenetLoader, load_data
 
@@ -14,6 +18,8 @@ class ImageData(object):
         super(ImageData, self).__init__()
         self.trainloader = None
         self.testloader = None
+        self.trainset = None
+        self.testset = None
         self.cuda = None
 
     def load(self, transformation_type="pytorch"):
@@ -42,14 +48,14 @@ class ImageData(object):
         # dataloader arguments - something you'll fetch these from cmdprmt
         dataloader_args = dict(shuffle=True, batch_size=128, num_workers=4, pin_memory=True) if self.cuda else dict(shuffle=True, batch_size=64)
 
-        trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
+        self.trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
                                             download=True, transform=train_transform)
 
-        testset = torchvision.datasets.CIFAR10(root='./data', train=False,
+        self.testset = torchvision.datasets.CIFAR10(root='./data', train=False,
                                             download=True, transform=test_transform)
 
-        self.trainloader = torch.utils.data.DataLoader(trainset, batch_size=512, shuffle=True, num_workers=4)
-        self.testloader = torch.utils.data.DataLoader(testset, batch_size=512, shuffle=False, num_workers=4)
+        self.trainloader = torch.utils.data.DataLoader(self.trainset, batch_size=512, shuffle=True, num_workers=4)
+        self.testloader = torch.utils.data.DataLoader(self.testset, batch_size=512, shuffle=False, num_workers=4)
 
     def load_TINY_IMAGENET(self, image_path, transformation_type="pytorch"):
         train_transform, test_transform = self.load(transformation_type)
@@ -62,22 +68,26 @@ class ImageData(object):
         test_size = len(full_dataset) - train_size
         temp_train_dataset, temp_test_dataset = torch.utils.data.random_split(full_dataset, [train_size, test_size])
 
-        train_dataset = TinyImagenetLoader(temp_train_dataset, transform=train_transform)
-        test_dataset = TinyImagenetLoader(temp_test_dataset, transform=test_transform)
+        self.trainset = TinyImagenetLoader(temp_train_dataset, transform=train_transform)
+        self.testset = TinyImagenetLoader(temp_test_dataset, transform=test_transform)
 
-        #print(self.get_class_distribution(trainset))
-        #print(self.get_class_distribution(testset))
+        self.trainloader = torch.utils.data.DataLoader(self.trainset, batch_size=512, shuffle=True, num_workers=4)
+        self.testloader = torch.utils.data.DataLoader(self.testset, batch_size=512, shuffle=False, num_workers=4)
 
-        self.trainloader = torch.utils.data.DataLoader(train_dataset, batch_size=512, shuffle=True, num_workers=4)
-        self.testloader = torch.utils.data.DataLoader(test_dataset, batch_size=512, shuffle=False, num_workers=4)
-
-    def get_class_distribution(self, dataset_obj):
+    def get_class_distribution_loaders(dataloader_obj, dataset_obj):
         idx2class = {v: k for k, v in dataset_obj.class_to_idx.items()}
         count_dict = {k:0 for k,v in dataset_obj.class_to_idx.items()}
 
-        for element in dataset_obj:
-            y_lbl = element[1]
-            y_lbl = idx2class[y_lbl]
-            count_dict[y_lbl] += 1
+        for _,j in dataloader_obj:
+            y_idx = j.item()
+            y_lbl = idx2class[y_idx]
+            count_dict[str(y_lbl)] += 1
 
         return count_dict
+
+    def plot_class_distribution(self):
+        fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(18,7))
+        sns.barplot(data = pd.DataFrame.from_dict([get_class_distribution_loaders(self.trainloader, self.trainset)]).melt(), 
+                    x = "variable", y="value", hue="variable",  ax=axes[0]).set_title('Train Set')
+        sns.barplot(data = pd.DataFrame.from_dict([get_class_distribution_loaders(self.testloader, self.testset)]).melt(), 
+                    x = "variable", y="value", hue="variable",  ax=axes[1]).set_title('Test Set')
