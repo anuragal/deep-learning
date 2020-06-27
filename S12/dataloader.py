@@ -62,8 +62,8 @@ class ImageData(object):
         test_size = len(full_dataset) - train_size
         temp_train_dataset, temp_test_dataset = torch.utils.data.random_split(full_dataset, [train_size, test_size])
 
-        train_dataset = tinyimagenet.TinyImagenetDataset(temp_train_dataset, transform=train_transform)
-        test_dataset = tinyimagenet.TinyImagenetDataset(temp_test_dataset, transform=test_transform)
+        train_dataset = TinyImagenetLoader(temp_train_dataset, transform=train_transform)
+        test_dataset = TinyImagenetLoader(temp_test_dataset, transform=test_transform)
 
         #print(self.get_class_distribution(trainset))
         #print(self.get_class_distribution(testset))
