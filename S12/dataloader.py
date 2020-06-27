@@ -25,7 +25,7 @@ class ImageData(object):
         SEED = 1
 
         # CUDA?
-        self.cuda = False # torch.cuda.is_available()
+        self.cuda = torch.cuda.is_available()
         print("CUDA Available?", self.cuda)
 
         # For reproducibility
