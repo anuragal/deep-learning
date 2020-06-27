@@ -74,7 +74,7 @@ class ImageData(object):
         self.trainloader = torch.utils.data.DataLoader(self.trainset, batch_size=512, shuffle=True, num_workers=4)
         self.testloader = torch.utils.data.DataLoader(self.testset, batch_size=512, shuffle=False, num_workers=4)
 
-    def get_class_distribution_loaders(dataloader_obj, dataset_obj):
+    def get_class_distribution_loaders(self, dataloader_obj, dataset_obj):
         idx2class = {v: k for k, v in dataset_obj.class_to_idx.items()}
         count_dict = {k:0 for k,v in dataset_obj.class_to_idx.items()}
 
@@ -87,7 +87,7 @@ class ImageData(object):
 
     def plot_class_distribution(self):
         fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(18,7))
-        sns.barplot(data = pd.DataFrame.from_dict([get_class_distribution_loaders(self.trainloader, self.trainset)]).melt(), 
+        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.trainloader, self.trainset)]).melt(), 
                     x = "variable", y="value", hue="variable",  ax=axes[0]).set_title('Train Set')
-        sns.barplot(data = pd.DataFrame.from_dict([get_class_distribution_loaders(self.testloader, self.testset)]).melt(), 
+        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.testloader, self.testset)]).melt(), 
                     x = "variable", y="value", hue="variable",  ax=axes[1]).set_title('Test Set')
