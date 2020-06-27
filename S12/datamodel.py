@@ -107,14 +107,14 @@ class DataModel(object):
         if self.can_exit:
           print("****Required Accuracy is acheived****")
           break
-        print("EPOCH:", epoch + 1)
+        print("\nEPOCH:", epoch + 1)
         self.misclassified = []
         self.train(device, self.img_data.trainloader, epoch)
 
         self.test(device, self.img_data.testloader)
 
         lr = self.optimizer.param_groups[0]['lr']
-        print('\nLearning Rate: {:0.6f}'.format(lr))
+        print('Learning Rate: {:0.6f}'.format(lr))
 
   def plot_matrix(self, matrix_data, matrix):
       fig = plt.figure(figsize=(10, 10))
