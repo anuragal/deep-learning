@@ -7,7 +7,8 @@ import pathlib
 import random
 
 class TinyImagenetLoader(Dataset):
-    def __init__(self, data, transform=None):
+    def __init__(self, data, root_dir, transform=None):
+        self.root_dir = root_dir
         self.transform = transform
         self.images, self.labels = zip(*data)
         self.__init()
