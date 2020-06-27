@@ -71,8 +71,8 @@ class ImageData(object):
         self.trainset = TinyImagenetLoader(temp_train_dataset, image_path, transform=train_transform)
         self.testset = TinyImagenetLoader(temp_test_dataset, image_path, transform=test_transform)
 
-        self.trainloader = torch.utils.data.DataLoader(self.trainset, batch_size=512, shuffle=True, num_workers=4)
-        self.testloader = torch.utils.data.DataLoader(self.testset, batch_size=512, shuffle=False, num_workers=4)
+        self.trainloader = torch.utils.data.DataLoader(self.trainset, batch_size=256, shuffle=True, num_workers=4)
+        self.testloader = torch.utils.data.DataLoader(self.testset, batch_size=256, shuffle=False, num_workers=4)
 
     def get_class_distribution_loaders(self, dataset_obj):
         idx2class = {v: k for k, v in dataset_obj.class_to_idx.items()}
