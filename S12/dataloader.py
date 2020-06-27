@@ -55,7 +55,7 @@ class ImageData(object):
         train_transform, test_transform = self.load(transformation_type)
 
         training_images = path.join(image_path, "train/")
-        test_images = path.join(image_path, "val/")
+        test_images = path.join(image_path, "train/")
 
         trainset = torchvision.datasets.ImageFolder(
                               root = training_images,
