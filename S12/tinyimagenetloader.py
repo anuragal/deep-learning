@@ -10,6 +10,13 @@ class TinyImagenetLoader(Dataset):
     def __init__(self, data, transform=None):
         self.transform = transform
         self.images, self.labels = zip(*data)
+        self.__init()
+
+    def __init(self):
+        self.jpg_files = [f for f in pathlib.Path(self.root_dir).glob('**/*.jpg')
+                          if '.ipynb_checkpoints' not in f.parts]
+        self.class_to_idx = {clazz: i for i, clazz in enumerate(self.labels)}
+        print(self.class_to_idx)
 
     def __len__(self):
         return len(self.images)
