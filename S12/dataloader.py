@@ -3,7 +3,7 @@ from os import path
 import torch
 import torchvision
 
-from transformation import TransformationFactory
+from deep_learning.S12.transformation import TransformationFactory
 
 class ImageData(object):
 

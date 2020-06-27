@@ -5,8 +5,8 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 import numpy as np
 
-from lrfinder import LRFinder
-from gradcam import VisualizeCam
+from deep_learning.S12.lrfinder import LRFinder
+from deep_learning.S12.gradcam import VisualizeCam
 
 class DataModel(object):
   def __init__(self, image_data, criterion, optimizer, schedular, num_of_epochs = 10, cal_misclassified = False, expected_accuracy = 95):
