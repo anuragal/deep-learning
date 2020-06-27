@@ -74,15 +74,15 @@ class ImageData(object):
         self.trainloader = torch.utils.data.DataLoader(self.trainset, batch_size=512, shuffle=True, num_workers=4)
         self.testloader = torch.utils.data.DataLoader(self.testset, batch_size=512, shuffle=False, num_workers=4)
 
-    def get_class_distribution_loaders(self, dataloader_obj, dataset_obj):
+    def get_class_distribution_loaders(self, dataset_obj):
         idx2class = {v: k for k, v in dataset_obj.class_to_idx.items()}
         count_dict = {k:0 for k,v in dataset_obj.class_to_idx.items()}
 
-        for _,j in dataloader_obj:
-            y_idx = j.item()
-            y_lbl = idx2class[y_idx]
-            count_dict[str(y_lbl)] += 1
-
+        for element in dataset_obj:
+            y_lbl = element[1]
+            y_lbl = idx2class[y_lbl]
+            count_dict[y_lbl] += 1
+            
         return count_dict
 
     def plot_class_distribution(self, dataset_path):
@@ -91,9 +91,9 @@ class ImageData(object):
                        )
 
         fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(18,7))
-        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.trainloader, self.trainset)]).melt(), 
+        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.trainset)]).melt(), 
                     x = "variable", y="value", hue="variable",  ax=axes[0]).set_title('Train Set')
-        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.testloader, self.testset)]).melt(), 
+        sns.barplot(data = pd.DataFrame.from_dict([self.get_class_distribution_loaders(self.testset)]).melt(), 
                     x = "variable", y="value", hue="variable",  ax=axes[1]).set_title('Test Set')
 
         # del natural_img_dataset
