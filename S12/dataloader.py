@@ -4,11 +4,11 @@ import torch
 import torchvision
 
 from deep_learning.S12.transformation import TransformationFactory
+from deep_learning.S12.tinyimagenetloader import TinyImagenetLoader, load_data
 
 class ImageData(object):
 
-    classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog',
-		    'frog', 'horse', 'ship', 'truck')
+    classes = None
 
     def __init__(self):
         super(ImageData, self).__init__()
@@ -54,24 +54,22 @@ class ImageData(object):
     def load_TINY_IMAGENET(self, image_path, transformation_type="pytorch"):
         train_transform, test_transform = self.load(transformation_type)
 
-        training_images = path.join(image_path, "train/")
-        test_images = path.join(image_path, "train/")
+        full_dataset, class_names = load_data(image_path)
 
-        trainset = torchvision.datasets.ImageFolder(
-                              root = training_images,
-                              transform = train_transform
-                       )
+        self.classes = class_names
 
-        testset = torchvision.datasets.ImageFolder(
-                              root = test_images,
-                              transform = test_transform
-                       )
+        train_size = int(0.7 * len(full_dataset))
+        test_size = len(full_dataset) - train_size
+        temp_train_dataset, temp_test_dataset = torch.utils.data.random_split(full_dataset, [train_size, test_size])
+
+        train_dataset = tinyimagenet.TinyImagenetDataset(temp_train_dataset, transform=train_transform)
+        test_dataset = tinyimagenet.TinyImagenetDataset(temp_test_dataset, transform=test_transform)
 
         #print(self.get_class_distribution(trainset))
         #print(self.get_class_distribution(testset))
 
-        self.trainloader = torch.utils.data.DataLoader(trainset, batch_size=512, shuffle=True, num_workers=4)
-        self.testloader = torch.utils.data.DataLoader(testset, batch_size=512, shuffle=False, num_workers=4)
+        self.trainloader = torch.utils.data.DataLoader(train_dataset, batch_size=512, shuffle=True, num_workers=4)
+        self.testloader = torch.utils.data.DataLoader(test_dataset, batch_size=512, shuffle=False, num_workers=4)
 
     def get_class_distribution(self, dataset_obj):
         idx2class = {v: k for k, v in dataset_obj.class_to_idx.items()}
