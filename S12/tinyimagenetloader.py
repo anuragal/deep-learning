@@ -35,13 +35,13 @@ def load_data(image_path):
 
     # train data
     for value, key in enumerate(class_ids):
-        images += [f'{path}train/{key}/images/{key}_{i}.JPEG' for i in range(500)]
+        images += [f'{image_path}train/{key}/images/{key}_{i}.JPEG' for i in range(500)]
         labels += [value for i in range(500)]
 
     # validation data
-    for line in open( path + 'val/val_annotations.txt'):
+    for line in open( image_path + 'val/val_annotations.txt'):
         img_name, class_id = line.split('\t')[:2]
-        images.append(f'{path}val/images/{img_name}')
+        images.append(f'{image_path}val/images/{img_name}')
         labels.append(id_dict[class_id])
 
     dataset = list(zip(images, labels))
