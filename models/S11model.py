@@ -2,8 +2,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class S11Cifar10DNN(nn.Module):
-    def __init__(self):
+    def __init__(self, num_of_classes=10):
         super(S11Cifar10DNN, self).__init__()
+
+        self.num_of_classes = num_of_classes
 
         self.prep_layer = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=64, kernel_size=(3, 3), stride=1, padding=1, bias=False),
@@ -47,7 +49,7 @@ class S11Cifar10DNN(nn.Module):
         self.layer4_pool = nn.MaxPool2d(4, 1) 
  
         self.fc_layer = nn.Sequential(
-            nn.Linear(in_features=512, out_features=10),
+            nn.Linear(in_features=512, out_features=self.num_of_classes),
         )
 
     def forward(self, x):
