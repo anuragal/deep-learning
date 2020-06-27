@@ -216,4 +216,7 @@ class DataModel(object):
       image_for_gradcam.append(self.misclassified[i])
       if i == 25:
           break
+    print(len(incorrect_pred_imgs))
+    print(len(image_for_gradcam))
+    print(target_layers)
     viz_cam(torch.stack(incorrect_pred_imgs), image_for_gradcam, target_layers, metric="incorrect")
