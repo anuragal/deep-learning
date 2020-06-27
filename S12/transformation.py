@@ -23,7 +23,8 @@ from albumentations.augmentations.transforms import (
     CoarseDropout,
     PadIfNeeded,
     RandomCrop,
-    Cutout
+    Cutout,
+    RGBShift
 )
 
 from albumentations import (
@@ -54,11 +55,11 @@ class AlbumentationTransformation(object):
     # Use data aug only for train data
     if is_train:
       transforms_list.extend([
-        PadIfNeeded(min_height=36, min_width=36, value=mean*255.0), 
-        RandomCrop(height=8, width=8, p=1.0),
+        PadIfNeeded(min_height=80, min_width=80, value=mean*255.0),
+        RandomCrop(height=64, width=64, p=1.0),
         HorizontalFlip(p=0.5),
-        # Rotate(limit=15),
-        Cutout(num_holes=1, max_h_size=8, max_w_size=8, fill_value=mean*255.0, p=0.5),
+        RGBShift(r_shift_limit=50, g_shift_limit=50, b_shift_limit=50, p=0.5),
+        Cutout(num_holes=1, max_h_size=24, max_w_size=24, fill_value=mean*255.0, p=0.5),
         ])
     transforms_list.extend([
       Normalize(
