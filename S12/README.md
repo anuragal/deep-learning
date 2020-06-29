@@ -1,6 +1,11 @@
 ##   Object Localization - YOLO
 
 ### ResNet-Tiny-ImageNet
+1. Use TINY IMAGENET dataset. 
+2. Train ResNet18 on this dataset (70/30 split) for 50 Epochs. Target 50%+ Validation Accuracy. 
+
+#### Results
+
 
 ### Best K clusters for 50 Dog dataset
 1. Downloaded [50 images of dogs](https://github.com/anuragal/deep-learning/tree/master/S12/Assignment_B/dog_images)
