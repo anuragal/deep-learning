@@ -57,7 +57,7 @@ class AnnotatedData(object):
         else:
             self.annotated_df_proccesed.plot.scatter('bbox_rel_width', 'bbox_rel_height')
 
-    def plot_images(image_path, annotated_data, num_of_images=5):
+    def plot_images(self, image_path, annotated_data, num_of_images=5):
         # Create figure and axes
         fig, axs = plt.subplots(1, ncols=num_of_images, figsize=(10,10))
 
