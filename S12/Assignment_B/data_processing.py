@@ -2,8 +2,11 @@ import os
 import math
 
 import pandas as pd
+import numpy as np
 
 from PIL import Image
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 class AnnotatedData(object):
     def __init__(self):
@@ -53,3 +56,24 @@ class AnnotatedData(object):
             self.annotated_df_proccesed.plot.scatter('bbox_rel_log_width', 'bbox_rel_log_height')
         else:
             self.annotated_df_proccesed.plot.scatter('bbox_rel_width', 'bbox_rel_height')
+
+    def plot_images(image_path, annotated_data, num_of_images=5):
+        # Create figure and axes
+        fig, axs = plt.subplots(1, ncols=num_of_images, figsize=(10,10))
+
+        for i, ax in enumerate(axs.flat):
+            im = np.array(Image.open(os.path.join(image_path, annotated_data.iloc[i]['name'])))
+
+            # Display the image
+            ax.imshow(im)
+
+            # Create a Rectangle patch
+            rect = patches.Rectangle((annotated_data.iloc[i]['bbox_x'], annotated_data.iloc[i]['bbox_y']), 
+                                    annotated_data.iloc[i]['bbox_width'], annotated_data.iloc[i]['bbox_height'],
+                                    linewidth=3 ,edgecolor='r', facecolor='none')
+
+            # Add the patch to the Axes
+            ax.add_patch(rect)
+
+        plt.axis('off')
+        plt.show()
