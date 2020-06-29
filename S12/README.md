@@ -1,5 +1,6 @@
 ##   Object Localization - YOLO
 
+### Assignment A
 ### ResNet-Tiny-ImageNet
 1. Use TINY IMAGENET dataset. 
 2. Train ResNet18 on this dataset (70/30 split) for 50 Epochs.
@@ -25,6 +26,7 @@ Acheived Validation Accuracy: 41%
 #### Validation Loss & Accuracy
 ![](https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/annotated_5dog_image.png)
 
+### Assignment B
 ### Best K clusters for 50 Dog dataset
 1. Downloaded [50 images of dogs](https://github.com/anuragal/deep-learning/tree/master/S12/Assignment_B/dog_images)
 2. Annotate bounding boxes around the dogs using [VGG annotator](http://www.robots.ox.ac.uk/~vgg/software/via/)
@@ -78,5 +80,3 @@ Looking at the figure above 6 clusters are ideal
 | 1  | 3 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/3-clusters.png" height="60%" width="60%" ></a> | |
 | 1  | 4 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/4-clusters.png" height="60%" width="60%" ></a> | |
 | 1  | 6 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/6-clusters.png" height="60%" width="60%" ></a> | Yes, the distance between various point is minimal |
-
-5. 
