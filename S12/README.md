@@ -36,10 +36,12 @@
 ![](https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/annotated_5dog_image.png)
 
 3. Scatter chart
+
 <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/scatter_log.png" height="40%" width="40%" ></a>
 
 
 4. Find out Best count of Cluster using Elbow method
+
 <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/Elbow.png" height="40%" width="40%" ></a>
 
 Looking at the figure above 6 clusters are ideal
@@ -48,8 +50,8 @@ Looking at the figure above 6 clusters are ideal
 
 | S.No.  | Number of Clusters | Plot | Recommendation |
 | ------------- | ------------- | ------------- | ------------- |
-| 1  | 2 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/2-clusters.png" height="20%" width="20%" ></a> | |
-| 1  | 3 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/3-clusters.png" height="20%" width="20%" ></a> | |
+| 1  | 2 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/2-clusters.png" height="50%" width="50%" ></a> | |
+| 1  | 3 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/3-clusters.png" height="50%" width="50%" ></a> | |
 | 1  | 4 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/4-clusters.png" height="20%" width="20%" ></a> | |
 | 1  | 6 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/6-clusters.png" height="20%" width="20%" ></a> | Yes |
 
