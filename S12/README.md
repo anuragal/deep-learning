@@ -40,6 +40,10 @@
 
 
 ##### Scatter chart with log of data
-![](https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/scatter_log.png =50x50)
+<a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/scatter_log.png" align="left" height="40%" width="40%" ></a>
+
+
+##### Find out Best count of Cluster using Elbow method
+<a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/Elbow.png" align="left" height="40%" width="40%" ></a>
 
 ##### 
