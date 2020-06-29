@@ -1,6 +1,8 @@
 import numpy as np
 from sklearn.cluster import KMeans
 
+import matplotlib.pyplot as plt
+
 def kmc_elbow(input_data):
     X = np.array(input_data[['bbox_rel_log_width', 'bbox_rel_log_height']])
 
