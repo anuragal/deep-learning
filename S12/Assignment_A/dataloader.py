@@ -7,8 +7,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from deep_learning.S12.transformation import TransformationFactory
-from deep_learning.S12.tinyimagenetloader import TinyImagenetLoader, load_data
+from deep_learning.S12.Assignment_A.transformation import TransformationFactory
+from deep_learning.S12.Assignment_A.tinyimagenetloader import TinyImagenetLoader, load_data
 
 class ImageData(object):
 
