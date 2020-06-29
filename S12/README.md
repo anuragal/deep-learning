@@ -54,6 +54,6 @@ Looking at the figure above 6 clusters are ideal
 | 1  | 2 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/2-clusters.png" height="60%" width="60%" ></a> | |
 | 1  | 3 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/3-clusters.png" height="60%" width="60%" ></a> | |
 | 1  | 4 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/4-clusters.png" height="60%" width="60%" ></a> | |
-| 1  | 6 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/6-clusters.png" height="60%" width="60%" ></a> | Yes |
+| 1  | 6 | <a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/6-clusters.png" height="60%" width="60%" ></a> | Yes, the distance between various point is minimal |
 
 5. 
