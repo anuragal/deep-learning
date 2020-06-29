@@ -21,5 +21,8 @@
 #### Results
 Acheived Validation Accuracy: 41%
 
+#### Test & Train Accuracy
+<a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_A/images/accuracy.png" height="40%" width="40%" ></a>
+
 #### Validation Loss & Accuracy
-![](https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/annotated_5dog_image.png)
+<a href="url"><img src="https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_A/images/loss_accuracy.png" height="40%" width="40%" ></a>
