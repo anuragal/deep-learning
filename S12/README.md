@@ -33,13 +33,13 @@
 ```
 
 2. Sample Annotated images
-![](https://github.com/anuragal/deep-learning/blob/master/S12images/directory.png)
+
 ![](https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/annotated_5dog_image.png)
 
 3. K clusters
 
 
 ##### Scatter chart with log of data
-
+![](https://github.com/anuragal/deep-learning/blob/master/S12/Assignment_B/files/scatter_log.png =50x50)
 
 ##### 
